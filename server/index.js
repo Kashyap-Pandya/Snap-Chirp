@@ -21,6 +21,13 @@ import postRoutes from "./routes/posts.js";
 //middleware
 import { verifyToken } from "./middleware/auth.js";
 
+//model
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+
+//fake data
+import { users, posts } from "./data/index.js";
+
 //module url configuration
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -66,5 +73,7 @@ mongoose
 		app.listen(PORT, () =>
 			console.log(`server is listening on port : ${PORT}`)
 		);
+		// User.insertMany(users);
+		// Post.insertMany(posts);
 	})
 	.catch((error) => console.log(`${error} did not connect`));
